@@ -1,8 +1,26 @@
 import Image from "next/image";
-import { Camera, MessageCircle, BarChart3, Target, Globe, Zap, Star, Check, Apple, Play } from "lucide-react";
+import { Camera, MessageCircle, BarChart3, Target, Globe, Zap, Star, Check } from "lucide-react";
 
 const CALLIE_IMG = (name: string) =>
   `https://mycallie.app/assets/images/${name}?v=d4e194df`;
+
+const AppStoreBadge = () => (
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+    alt="Download on the App Store"
+    style={{ height: 48, width: "auto" }}
+  />
+);
+
+const GooglePlayBadge = () => (
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+    alt="Get it on Google Play"
+    style={{ height: 72, width: "auto", marginTop: -12, marginBottom: -12 }}
+  />
+);
 
 const features = [
   {
@@ -12,46 +30,43 @@ const features = [
   },
   {
     icon: <MessageCircle className="w-6 h-6" />,
-    title: "Type or Talk",
-    desc: "Log meals by typing, voice, or switching languages mid-sentence — Callie always understands you.",
+    title: "Type, Talk or Snap",
+    desc: "Type, talk, or switch between languages mid-sentence — Callie will still understand you.",
   },
   {
     icon: <Globe className="w-6 h-6" />,
     title: "Menu Scanner",
-    desc: "Dining out doesn't mean guessing anymore. Scan any restaurant menu and stay on track effortlessly.",
+    desc: "Eat out, stay on track. Dining out does not have to mean guessing calories anymore.",
   },
   {
     icon: <BarChart3 className="w-6 h-6" />,
-    title: "Smart Analytics",
-    desc: "Visualize your progress with weight tracking, habit streaks, and macro breakdowns that actually make sense.",
+    title: "Weight Tracker & Fit Flow",
+    desc: "Visualize your progress and habit consistency with analytics tools built for real life.",
   },
   {
     icon: <Target className="w-6 h-6" />,
-    title: "Built-In AI Coach",
-    desc: "Get personalized nutrition guidance through natural conversation — like a coach who never judges you.",
+    title: "Built-In Nutrition Coach",
+    desc: "AI-driven personalized guidance through natural conversation — looking out for you every step.",
   },
   {
     icon: <Zap className="w-6 h-6" />,
     title: "Personalized Goals",
-    desc: "Custom macros, BMI tracking, fitness level assessment, and allergy management — all tailored to you.",
+    desc: "BMI tracking, custom goals, fitness level assessment, and allergy management — all tailored to you.",
   },
 ];
 
 const steps = [
   {
-    num: "01",
     title: "Download Callie",
-    desc: "Get the app on iOS or Android and set up your profile in under 2 minutes.",
+    desc: "Get the app on iOS or Android and set up your profile in minutes.",
     img: "image01.png",
   },
   {
-    num: "02",
     title: "Snap, Type or Talk",
     desc: "Log meals with a photo, your voice, or a quick text — whatever's fastest for you.",
     img: "image03.png",
   },
   {
-    num: "03",
     title: "Watch Progress Happen",
     desc: "Track calories, macros, and habits with beautiful insights that keep you motivated.",
     img: "image04.png",
@@ -80,13 +95,13 @@ const testimonials = [
   {
     name: "Tom W.",
     handle: "@tomfitlife",
-    text: "Lost 18 lbs in 3 months just by being consistent with Callie. The AI coach keeps me accountable.",
+    text: "The AI coach keeps me accountable. It speaks my language — literally and figuratively.",
     stars: 5,
   },
   {
     name: "Aisha B.",
     handle: "@aisha_health",
-    text: "The menu scanner saved me SO many times at restaurants. No more calorie guessing when eating out.",
+    text: "The menu scanner saved me so many times at restaurants. No more calorie guessing when eating out.",
     stars: 5,
   },
   {
@@ -123,7 +138,7 @@ const plans = [
 
 const planFeatures = [
   "Unlimited photo food scanning",
-  "AI nutrition coach (24/7)",
+  "AI nutrition coach",
   "Multi-language voice logging",
   "Menu & barcode scanner",
   "Weight & habit tracker",
@@ -142,16 +157,10 @@ export default function Home() {
           <span className="text-white font-bold text-xl tracking-tight">callie</span>
         </div>
         <div className="flex items-center gap-3">
-          <a
-            href="#pricing"
-            className="text-white/70 hover:text-white text-sm transition-colors hidden sm:block"
-          >
+          <a href="#pricing" className="text-white/70 hover:text-white text-sm transition-colors hidden sm:block">
             Pricing
           </a>
-          <a
-            href="https://apps.apple.com"
-            className="bg-green-500 hover:bg-green-400 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors"
-          >
+          <a href="https://apps.apple.com" className="bg-green-500 hover:bg-green-400 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors">
             Download Free
           </a>
         </div>
@@ -161,47 +170,26 @@ export default function Home() {
       <section className="gradient-hero px-6 pt-20 pb-32 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.08)_0%,transparent_70%)]" />
         <div className="relative max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-8">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-              ))}
-            </div>
-            <span className="text-white/80 text-sm">Loved by 100K+ users &middot; 4.8 rating</span>
-          </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white leading-tight tracking-tight mb-6">
-            Track calories in{" "}
-            <span className="text-green-400">30 seconds.</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight tracking-tight mb-6">
+            Track calories in <span className="text-green-400">30 seconds.</span>
             <br />
             Type, talk or snap.
           </h1>
 
-          <p className="text-white/60 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            The world&apos;s easiest calorie tracker that cares about your sanity, not just numbers.
-            Two minutes from now, you&apos;ll wish you started sooner.
+          <p className="text-white/60 text-lg sm:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
+            World&apos;s easiest calorie tracker that cares about your sanity, not just numbers.
+          </p>
+          <p className="text-white/80 text-base sm:text-lg max-w-xl mx-auto mb-10 font-medium">
+            Two minutes from now, you&apos;ll wish you started sooner. Hit download!
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <a
-              href="https://apps.apple.com"
-              className="flex items-center justify-center gap-3 bg-white text-gray-900 font-semibold px-6 py-3.5 rounded-2xl hover:bg-gray-100 transition-colors"
-            >
-              <Apple className="w-5 h-5" />
-              <div className="text-left">
-                <div className="text-xs text-gray-500 leading-none">Download on the</div>
-                <div className="text-base font-bold leading-tight">App Store</div>
-              </div>
+          <div className="flex flex-col sm:flex-row items-center gap-3 justify-center mb-16">
+            <a href="https://apps.apple.com">
+              <AppStoreBadge />
             </a>
-            <a
-              href="https://play.google.com"
-              className="flex items-center justify-center gap-3 bg-white/10 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-2xl hover:bg-white/20 transition-colors"
-            >
-              <Play className="w-5 h-5 fill-white" />
-              <div className="text-left">
-                <div className="text-xs text-white/60 leading-none">Get it on</div>
-                <div className="text-base font-bold leading-tight">Google Play</div>
-              </div>
+            <a href="https://play.google.com">
+              <GooglePlayBadge />
             </a>
           </div>
 
@@ -209,7 +197,7 @@ export default function Home() {
           <div className="flex items-end justify-center gap-4 sm:gap-6">
             <div className="float-animation" style={{ animationDelay: "0.5s" }}>
               <Image
-                src={CALLIE_IMG("image06.png")}
+                src={CALLIE_IMG("image03.png")}
                 alt="Callie app screenshot"
                 width={180}
                 height={360}
@@ -241,29 +229,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SOCIAL PROOF BAR */}
-      <div className="bg-gray-950 py-5 px-6">
-        <div className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-8 text-center">
-          {[
-            { val: "100K+", label: "Active Users" },
-            { val: "4.8★", label: "App Store Rating" },
-            { val: "30s", label: "Average Log Time" },
-            { val: "40+", label: "Languages Supported" },
-          ].map((stat) => (
-            <div key={stat.val}>
-              <div className="text-green-400 font-bold text-2xl">{stat.val}</div>
-              <div className="text-white/50 text-sm">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* FEATURES */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-              Everything you need, nothing you don&apos;t
+              Smart calorie tracking that speaks your language
             </h2>
             <p className="text-gray-500 text-lg max-w-xl mx-auto">
               Callie is built for real life — messy kitchens, restaurant menus, and days when counting every calorie feels impossible.
@@ -271,10 +242,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f) => (
-              <div
-                key={f.title}
-                className="card-hover bg-gray-50 rounded-2xl p-6 border border-gray-100"
-              >
+              <div key={f.title} className="card-hover bg-gray-50 rounded-2xl p-6 border border-gray-100">
                 <div className="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-4">
                   {f.icon}
                 </div>
@@ -291,7 +259,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-              Start tracking in 3 steps
+              Start tracking in minutes
             </h2>
             <p className="text-white/50 text-lg max-w-xl mx-auto">
               No complicated setup. No learning curve. Just results.
@@ -299,7 +267,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((step) => (
-              <div key={step.num} className="text-center">
+              <div key={step.title} className="text-center">
                 <div className="relative inline-block mb-6">
                   <Image
                     src={CALLIE_IMG(step.img)}
@@ -309,9 +277,6 @@ export default function Home() {
                     className="rounded-3xl mx-auto shadow-2xl shadow-black/50"
                     unoptimized
                   />
-                  <div className="absolute -top-3 -left-3 w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">{step.num}</span>
-                  </div>
                 </div>
                 <h3 className="text-white font-bold text-xl mb-2">{step.title}</h3>
                 <p className="text-white/50 text-sm leading-relaxed">{step.desc}</p>
@@ -326,10 +291,10 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-              Beautiful by design
+              A clutter-free, modern interface
             </h2>
             <p className="text-gray-500 text-lg max-w-xl mx-auto">
-              A clutter-free, modern interface that makes healthy habits feel effortless.
+              Callie makes healthy habits feel effortless — not like a chore.
             </p>
           </div>
           <div className="flex gap-4 sm:gap-6 justify-center flex-wrap">
@@ -356,15 +321,12 @@ export default function Home() {
               Real people, real results
             </h2>
             <p className="text-white/50 text-lg">
-              Over 100,000 people trust Callie to hit their goals every day.
+              People all over the world trust Callie to hit their goals every day.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 card-hover"
-              >
+              <div key={t.name} className="bg-white/5 border border-white/10 rounded-2xl p-6 card-hover">
                 <div className="flex mb-3">
                   {[...Array(t.stars)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -437,7 +399,7 @@ export default function Home() {
             ))}
           </div>
           <p className="text-center text-gray-400 text-xs">
-            Auto-renews unless cancelled 24 hours before renewal. Manage subscription in your App Store account.
+            Auto-renews unless cancelled before renewal. Manage subscription in your App Store account.
           </p>
         </div>
       </section>
@@ -451,26 +413,12 @@ export default function Home() {
           <p className="text-white/70 text-lg mb-10">
             Hit download. Your goals are closer than you think.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://apps.apple.com"
-              className="flex items-center justify-center gap-3 bg-white text-gray-900 font-semibold px-7 py-4 rounded-2xl hover:bg-gray-100 transition-colors"
-            >
-              <Apple className="w-5 h-5" />
-              <div className="text-left">
-                <div className="text-xs text-gray-500 leading-none">Download on the</div>
-                <div className="text-base font-bold leading-tight">App Store</div>
-              </div>
+          <div className="flex flex-col sm:flex-row items-center gap-3 justify-center">
+            <a href="https://apps.apple.com">
+              <AppStoreBadge />
             </a>
-            <a
-              href="https://play.google.com"
-              className="flex items-center justify-center gap-3 bg-white/15 border border-white/30 text-white font-semibold px-7 py-4 rounded-2xl hover:bg-white/25 transition-colors"
-            >
-              <Play className="w-5 h-5 fill-white" />
-              <div className="text-left">
-                <div className="text-xs text-white/60 leading-none">Get it on</div>
-                <div className="text-base font-bold leading-tight">Google Play</div>
-              </div>
+            <a href="https://play.google.com">
+              <GooglePlayBadge />
             </a>
           </div>
         </div>
